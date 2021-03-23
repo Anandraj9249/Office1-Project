@@ -1,0 +1,153 @@
+{% extends 'Public/base.html' %}
+{% block body %}
+
+<div class="wrapper">
+    <!-- Navbar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Create Users Form</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Create Users</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                        {% if error %}
+								<div class="alert alert-danger" role="alert">
+								  {{error}}
+								</div>
+								{% endif %}
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="/CreateUser" method="post">
+                        {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">First Name:</label>
+                                    <input type="text" class="form-control" id="inputEmail4" name="first_name"
+                                        placeholder="First Name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Middle Name:</label>
+                                    <input type="text" class="form-control" id="inputPassword4" name="mid_name"
+                                        placeholder="Middle Name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword4">Last Name:</label>
+                                    <input type="text" class="form-control" id="inputPassword4" name="last_name"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Phone:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input type="text" name="phone" class="form-control"
+                                            data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
+                                            inputmode="text" value="{{values.phone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">DOB:</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" name="dob" class="form-control datetimepicker-input"
+                                            data-target="#reservationdate" value="{{values.dob}}">
+                                        <div class="input-group-append" data-target="#reservationdate"
+                                            data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail4" name="email"
+                                    placeholder="Enter Email Address">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Password:</label>
+                                    <input type="password" class="form-control" id="inputEmail4" name="password"
+                                        placeholder="Enter Your Password">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Confirm Password:</label>
+                                    <input type="password" class="form-control" id="inputPassword4" name="pass2"
+                                        placeholder="Re-type Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Address:</label>
+                                <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputCity">Country:</label>
+                                    <input type="text" class="form-control" id="inputAddress" name="Cname" placeholder="Enter Your Country">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">State:</label>
+                                    <input type="text" class="form-control" id="inputAddress" name="Sname" placeholder="Enter Your State">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputZip">City:</label>
+                                    <input type="text" class="form-control" id="inputAddress" name="city" placeholder="Enter Your City">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                        <!-- /.col -->
+
+                        <!-- /.row -->
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+{% endblock %}
